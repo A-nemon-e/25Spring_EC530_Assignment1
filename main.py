@@ -95,9 +95,9 @@ def get_coordinates_from_input(array_name):
                             f"Invalid coordinate: ({lat}, {lon}). "
                             "Latitude must be between -90 and +90, longitude between -180 and +180."
                         )
-                        break  # Exit the loop if an invalid coordinate is found
+                        break  # Exit the inner loop if an invalid coordinate is found for thr purpose of unit test
                 else:
-                    # If the loop completed without breaking, all coordinates are valid
+                    # If the inner loop completed without breaking, all coordinates are valid
                     return valid_coordinates
             else:
                 print("Invalid input format. Please enter a list of (lat, lon) pairs.")
