@@ -1,18 +1,49 @@
 from geopy.distance import geodesic
 import re
 
+# def match_points(array1, array2):
+#   """
+# array: lat, lon
+#   """
+#   matches = {}
+#   for point1 in array1:
+#     min_distance = float('inf') 
+#     for i, point2 in enumerate(array2):
+#       curr_distance = geodesic(point1, point2).km
+#       if curr_distance < min_distance:
+#         min_distance = curr_distance
+#         matches[point1] = point2
+#   return matches
+
+def calculate_distance(point1, point2):
+  """
+  Calculates distance in kilometers.
+  """
+  return geodesic(point1, point2).km
+
+
+def find_closest_point(point, array):
+  """
+  Finds the closest point to the current point (of array1) in array2.
+  """
+  min_distance = float('inf')
+  closest_point = None
+  for p in array:
+    distance = calculate_distance(point, p)
+    if distance < min_distance:
+      min_distance = distance
+      closest_point = p
+  return closest_point
+
+
 def match_points(array1, array2):
   """
-array: lat, lon
+  Generates dict, where keys are points in array1 and values are the matched points in array2.
   """
+
   matches = {}
   for point1 in array1:
-    min_distance = float('inf') 
-    for i, point2 in enumerate(array2):
-      curr_distance = geodesic(point1, point2).km
-      if curr_distance < min_distance:
-        min_distance = curr_distance
-        matches[point1] = point2
+    matches[point1] = find_closest_point(point1, array2)
   return matches
 
 
