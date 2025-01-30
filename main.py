@@ -73,7 +73,7 @@ def get_coordinates_from_input(array_name):
     while True:
         print(f"Enter coordinates for {array_name} in the format [(lat1, lon1), (lat2, lon2), ...].")
         print("Latitude and longitude must be in decimal degrees (e.g., 40.7128, -74.0060).")
-        input_str = input("> ")
+        input_str = input()
         try:
             # Use regular expression to validate the input format
             pattern = r"^\s*\[(\s*\(\s*-?\d+(?:\.\d+)?\s*,\s*-?\d+(?:\.\d+)?\s*\)\s*,?\s*)*\]\s*$"
@@ -106,8 +106,8 @@ def get_coordinates_from_input(array_name):
 
 # array1 = [(40.7128, -74.0060), (34.0522, -118.2437), (41.8781, -87.6298), (31.25649, 120.126668)] 
 # array2 = [(37.7749, -122.4194), (40.6500, -73.9499), (34.0585,-118.2426), (41.8818, -87.6278)]  
-array1 = get_coordinates_from_input("array1")
-array2 = get_coordinates_from_input("array2")
+# array1 = get_coordinates_from_input("array1")
+# array2 = get_coordinates_from_input("array2")
 
-matches = match_points(array1, array2)
-print(f"Results: {matches}") 
+# matches = match_points(array1, array2)
+# print(f"Results: {matches}") 
